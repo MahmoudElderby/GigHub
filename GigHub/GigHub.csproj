@@ -167,9 +167,20 @@
     <Compile Include="Migrations\201811141256335_AddingIdenityUSers.Designer.cs">
       <DependentUpon>201811141256335_AddingIdenityUSers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811141308297_AddingGigClass.cs" />
+    <Compile Include="Migrations\201811141308297_AddingGigClass.Designer.cs">
+      <DependentUpon>201811141308297_AddingGigClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811141327415_OverrideConventionsforGigsAngGenres.cs" />
+    <Compile Include="Migrations\201811141327415_OverrideConventionsforGigsAngGenres.Designer.cs">
+      <DependentUpon>201811141327415_OverrideConventionsforGigsAngGenres.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Genre.cs" />
+    <Compile Include="Models\Gig.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -233,6 +244,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201811141256335_AddingIdenityUSers.resx">
       <DependentUpon>201811141256335_AddingIdenityUSers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811141308297_AddingGigClass.resx">
+      <DependentUpon>201811141308297_AddingGigClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811141327415_OverrideConventionsforGigsAngGenres.resx">
+      <DependentUpon>201811141327415_OverrideConventionsforGigsAngGenres.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
