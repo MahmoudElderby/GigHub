@@ -5,8 +5,9 @@
 
 <h2>Add a Gig</h2>
 
-<form>
 
+@using (Html.BeginForm("Create","Gigs"))
+{
     <div class="form-group">
         @Html.LabelFor(m => m.Venue)
         @Html.TextBoxFor(m => m.Venue, new {@class = "form-control"})
@@ -25,6 +26,8 @@
         @Html.DropDownListFor(m=>m.Genre,new SelectList (Model.Genres,"Id","Name"),"Select a Genre",new {@class="form-control"})
     </div>
     
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+    <button  type="submit" class="btn btn-primary">Submit</button>
+
+
+}
 
