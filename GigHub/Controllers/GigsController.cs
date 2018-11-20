@@ -10,7 +10,7 @@ namespace GigHub.Controllers
 	public class GigsController : Controller
 	{
 		private readonly ApplicationDbContext _context;
-	    private IEnumerable<Genre> _genres;
+		private IEnumerable<Genre> _genres;
 
 		public GigsController()
 		{
@@ -22,34 +22,35 @@ namespace GigHub.Controllers
 			_context.Dispose();
 		}
 
-	    [Authorize]
-	    public ActionResult Create()
-	    {
-
-	        if (_genres == null || !_genres.Any())
-	            _genres = _context.Genres.ToList();
-
-	        var gigViewModel = new GigFormViewModel
-	        {
-                Genres = _genres
-	            
-	        };
-	        return View(gigViewModel);
-	    }
-
-	    [HttpPost]
 		[Authorize]
+		public ActionResult Create()
+		{
+
+			if (_genres == null || !_genres.Any())
+				_genres = _context.Genres.ToList();
+
+			var gigViewModel = new GigFormViewModel
+			{
+				Genres = _genres
+				
+			};
+			return View(gigViewModel);
+		}
+
+		[HttpPost]
+		[Authorize]
+		[ValidateAntiForgeryToken]
 		public ActionResult Create(GigFormViewModel gigViewModel)
 		{
-		    if (!ModelState.IsValid)
-		    {
-		        if (_genres == null || !_genres.Any())
-		            _genres = _context.Genres.ToList();
+			if (!ModelState.IsValid)
+			{
+				if (_genres == null || !_genres.Any())
+					_genres = _context.Genres.ToList();
 
 
-		        gigViewModel.Genres = _genres;
-		        return View(gigViewModel);
-		    }
+				gigViewModel.Genres = _genres;
+				return View(gigViewModel);
+			}
 				
 
 			var gig = new Gig
