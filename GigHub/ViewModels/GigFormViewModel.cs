@@ -22,7 +22,7 @@ namespace GigHub.ViewModels
         [Required]
         public byte Genre { get; set; }
 
-        [Required]
+       
         public IEnumerable<Genre> Genres { get; set; }
 
 

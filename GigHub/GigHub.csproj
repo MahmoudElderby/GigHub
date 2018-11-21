@@ -184,16 +184,23 @@
     <Compile Include="Migrations\201811151331189_AddingGenreIDAndArtistId.Designer.cs">
       <DependentUpon>201811151331189_AddingGenreIDAndArtistId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811211226097_AddingApplicationUser.cs" />
+    <Compile Include="Migrations\201811211226097_AddingApplicationUser.Designer.cs">
+      <DependentUpon>201811211226097_AddingApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Gig.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModels\FutureDateValidation.cs" />
     <Compile Include="ViewModels\GigFormViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\ManageUserViewModel.cs" />
+    <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\TimeValidation.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -269,6 +276,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811151331189_AddingGenreIDAndArtistId.resx">
       <DependentUpon>201811151331189_AddingGenreIDAndArtistId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811211226097_AddingApplicationUser.resx">
+      <DependentUpon>201811211226097_AddingApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
