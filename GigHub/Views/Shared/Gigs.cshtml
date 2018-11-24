@@ -1,0 +1,80 @@
+﻿@model GigHub.ViewModels.GigsViewModel
+@{
+    ViewBag.Title = @Model.HeaderText;
+}
+
+<h2>@Model.HeaderText</h2>
+
+<ul class="gigs voffset3">
+    @foreach (var gig in Model.UpCominGigs)
+    {
+        <li>
+            <div class="date">
+                <div class="month">
+                    @gig.DateTime.ToString("MMM")
+                </div>
+                <div class="day">
+                    @gig.DateTime.ToString("d ")
+                </div>
+            </div>
+            <div class="details">
+                <span class="artist">
+                    @gig.Artist.Name
+                    @if (Model.ShowActions)
+                    {
+                        <button data-artistid="@gig.Artist.Id" class="btn btn-link js-follow">Follow</button>
+                    }
+                </span>
+                <span class="genre">
+                    @gig.Genre.Name
+                </span>
+                @if (Model.ShowActions)
+                {
+                    <button hidden data-gigid="@gig.Id" class="btn btn-default btn-sm pull-right js-toggle-attendance">Going ?</button>
+                }
+            </div>
+        </li>
+    }
+</ul>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            $(".js-toggle-attendance").click(function (e) {
+                var btn = $(e.target);
+
+                $.post("/api/attendances", { gigId: btn.attr("data-gigid") })
+
+                    .done(function () {
+                        btn.removeClass("btn-default")
+                            .addClass("btn-info")
+                            .text("Going");
+
+                    }).fail(function () {
+                        console.log("Error");
+                    });
+
+            });
+
+
+            $(".js-follow").click(function (e) {
+                var btn = $(e.target);
+
+
+                $.post("/api/followings", { artistid: btn.attr("data-artistid") })
+                    .done(function () {
+                        btn.text("Following");
+                    }).fail(function () {
+                        console.log("errrror");
+                    });
+
+            });
+
+
+        });
+
+    </script>
+
+}

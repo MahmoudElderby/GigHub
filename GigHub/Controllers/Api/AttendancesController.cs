@@ -8,6 +8,7 @@ namespace GigHub.Controllers.Api
 {
 
 
+    [Authorize]
     public class AttendancesController : ApiController
     {
         private ApplicationDbContext _context;
@@ -21,7 +22,6 @@ namespace GigHub.Controllers.Api
 
 
         [HttpPost]
-        [Authorize]
         public IHttpActionResult Attend(AttendanceDto dto)
         {
             var gig = _context.Gigs.SingleOrDefault(g => g.Id == dto.GigId);

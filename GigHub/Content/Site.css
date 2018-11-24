@@ -161,3 +161,10 @@ h6,
         padding-right: 20px; 
     }
     
+
+.voffset  { margin-top: 5px; }
+.voffset1 { margin-top: 10px; }
+.voffset2 { margin-top: 15px; }
+.voffset3 { margin-top: 20px; }
+.voffset4 { margin-top: 40px; }
+.voffset5 { margin-top: 70px; }
