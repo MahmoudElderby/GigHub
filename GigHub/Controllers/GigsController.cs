@@ -25,7 +25,7 @@ namespace GigHub.Controllers
 		[Authorize]
 		public ActionResult Create()
 		{
-
+    
 			if (_genres == null || !_genres.Any())
 				_genres = _context.Genres.ToList();
 
