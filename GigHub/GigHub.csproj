@@ -218,6 +218,10 @@
     <Compile Include="Migrations\201812061508579_AddingCanceledPropToGigs.Designer.cs">
       <DependentUpon>201812061508579_AddingCanceledPropToGigs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812111432244_AddingNotification.cs" />
+    <Compile Include="Migrations\201812111432244_AddingNotification.Designer.cs">
+      <DependentUpon>201812111432244_AddingNotification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Attendance.cs" />
@@ -225,6 +229,9 @@
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Gig.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\NotificationType.cs" />
+    <Compile Include="Models\UserNotification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ExternalLoginConfirmationViewModel.cs" />
@@ -324,6 +331,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812061508579_AddingCanceledPropToGigs.resx">
       <DependentUpon>201812061508579_AddingCanceledPropToGigs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812111432244_AddingNotification.resx">
+      <DependentUpon>201812111432244_AddingNotification.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

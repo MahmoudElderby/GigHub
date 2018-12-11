@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace GigHub.Models
 {
     public class Gig
-    {
+    { 
         public int Id { get; set; }
 
         [Required]
