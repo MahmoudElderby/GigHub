@@ -1,18 +1,19 @@
 ﻿@model GigHub.ViewModels.GigFormViewModel
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = @Model.HeadingText;
 }
 
-<h2>Add a Gig</h2>
+<h2>@Model.HeadingText</h2>
 
 
-@using (Html.BeginForm("Create","Gigs"))
+@using (Html.BeginForm(@Model.Action,"Gigs"))
 {
     <p class="alert alert-info">All fields are <strong >required</strong>.</p>
     <div class="form-group">
+        @Html.HiddenFor(m => m.Id)
         @Html.LabelFor(m => m.Venue)
-        @Html.TextBoxFor(m => m.Venue, new {@class = "form-control" , autofocus="true"})
-        @Html.ValidationMessageFor(m=>m.Venue)
+        @Html.TextBoxFor(m => m.Venue, new {@class = "form-control", autofocus = "true"})
+        @Html.ValidationMessageFor(m => m.Venue)
     </div>
 
     <div class="form-group">
@@ -32,7 +33,7 @@
     </div>
     
     @Html.AntiForgeryToken()
-    <button  type="submit" class="btn btn-primary">Save</button>
+    <button  type="submit" class="btn btn-primary btn-lg">Save</button>
 
 
 }
