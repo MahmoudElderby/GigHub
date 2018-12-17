@@ -24,8 +24,25 @@ namespace GigHub.Models
         {
             modelBuilder.Entity<Attendance>()
                 .HasRequired(a=>a.Gig)
-                .WithMany()
+                .WithMany(a=>a.Attendances)
                 .WillCascadeOnDelete(false);
+
+           modelBuilder.Entity<ApplicationUser>()
+               .HasMany(u=>u.Followers)
+               .WithRequired(f=>f.Followee)
+               .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<ApplicationUser>()
+                .HasMany(u=>u.Followees)
+                .WithRequired(f=>f.Follower)
+                .WillCascadeOnDelete(false);
+
+
+            modelBuilder.Entity<UserNotification>()
+                .HasRequired(n => n.User)
+                .WithMany(u => u.UserNotifications)
+                .WillCascadeOnDelete(false);
+
 
             base.OnModelCreating(modelBuilder);
         }

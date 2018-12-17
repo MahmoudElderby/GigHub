@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -168,17 +171,39 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\MappingProfile.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Dtos\ApplicationUserDto.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controllers\Api\AttendancesController.cs" />
-    <Compile Include="Controllers\Api\FollowingsController.cs" />
+    <Compile Include="Controllers\Api\FollowingsController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Dtos\FollowingDto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Dtos\GenreDto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Dtos\GigDto.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controllers\Api\GigsController.cs" />
+    <Compile Include="Dtos\NotificationDto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\Api\NotificationsController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controllers\GigsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Dtos\AttendanceDto.cs" />
-    <Compile Include="Dtos\FollowingDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -222,6 +247,14 @@
     <Compile Include="Migrations\201812111432244_AddingNotification.Designer.cs">
       <DependentUpon>201812111432244_AddingNotification.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812121627146_foo.cs" />
+    <Compile Include="Migrations\201812121627146_foo.Designer.cs">
+      <DependentUpon>201812121627146_foo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812121647212_nullabledate.cs" />
+    <Compile Include="Migrations\201812121647212_nullabledate.Designer.cs">
+      <DependentUpon>201812121647212_nullabledate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Attendance.cs" />
@@ -229,12 +262,20 @@
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Gig.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
-    <Compile Include="Models\Notification.cs" />
-    <Compile Include="Models\NotificationType.cs" />
-    <Compile Include="Models\UserNotification.cs" />
+    <Compile Include="Models\Notification.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\NotificationType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\UserNotification.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\ExternalLoginConfirmationViewModel.cs" />
+    <Compile Include="ViewModels\ExternalLoginConfirmationViewModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ViewModels\FutureDateValidation.cs" />
     <Compile Include="ViewModels\GigFormViewModel.cs" />
     <Compile Include="ViewModels\GigsViewModel.cs" />
@@ -334,6 +375,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812111432244_AddingNotification.resx">
       <DependentUpon>201812111432244_AddingNotification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812121627146_foo.resx">
+      <DependentUpon>201812121627146_foo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812121647212_nullabledate.resx">
+      <DependentUpon>201812121647212_nullabledate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
