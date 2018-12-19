@@ -39,5 +39,67 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    
+<script type="text/x-template" id="notification-template">
+    
+    <ul class="notifications">
+        <% 
+            _.each(notifications, function(notification){
+                
+                if(notification.type == 1)
+                    { %>
+                    <li> <span class="highlight"><%= notification.gig.artist.name %></span> has canceled the gig at <%=notification.gig.venue %> at <%= moment(notification.gig.dateTime).format("D MMM HH:mm")%>. </li>
+                   <% }
+        
+                 if(notification.type == 2 && notification.originalVenue !=notification.gig.venue && notification.originalDateTime !=notification.gig.dateTime)
+                    { %>
+                        <li> <span class="highlight"><%= notification.gig.artist.name %></span> has updated the gig at <%= notification.originalVenue %> at <%= momnet(notification.originalDateTime).format("D MMM HH:mm") %> to <%=notification.gig.venue %> at <%=moment(notification.gig.dateTime).format("D MMM HH:mm") %>. </li>
+                    <% }
+        else if(notification.type == 2 && notification.originalVenue !=notification.gig.venue)
+        { %>
+        
+        <li> <span class="highlight"><%= notification.gig.artist.name %></span> has updated the gig at <%= notification.originalVenue %>  to <%=notification.gig.venue %>. </li>
+        <% }
+        else if(notification.type == 2 && notification.originalDateTime !=notification.gig.dateTime)
+        { %>
+        <li> <span class="highlight"><%= notification.gig.artist.name %></span> has updated the gig from <%= moment(notification.originalDateTime).format("D MMM HH:mm") %> to <%= moment(notification.gig.dateTime).format("D MMM HH:mm") %>. </li>
+        <% }
+            });
+        %>
+    </ul>
+
+</script>
+<script>
+
+    $(document).ready(function() {
+        $.getJSON("/api/notifications",
+            function (notifications) {
+
+                if (notifications.length == 0)
+                    return;
+
+                $(".js-notifications-count")
+                    .text(notifications.length)
+                    .removeClass("hide")
+                    .addClass("animated flash");
+
+                
+
+                $(".notifications").popover({
+                    html: true,
+                    title: "Notifications",
+                    placement:"bottom",
+                    content:function() {
+                        var compiled = _.template($("#notification-template").html());
+                        return compiled({notifications:notifications});
+                    },
+                    template: '<div class="popover popover-notifications" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+                    
+                });
+            });
+    });
+
+</script>
+
 </body>
 </html>

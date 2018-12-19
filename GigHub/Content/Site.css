@@ -52,6 +52,7 @@ input[type="checkbox"].input-validation-error {
 
 .navbar-inverse .navbar-nav > li > a {
     color: white;
+
 }
 
 .navbar-inverse .navbar-brand {
@@ -71,6 +72,11 @@ input[type="checkbox"].input-validation-error {
 .navbar-inverse .navbar-nav > .dropdown > a .caret {
     border-top-color: #FFF;
     border-bottom-color: #FFF;
+}
+
+.popover {
+    box-shadow: none;
+    -webkit-box-shadow: none;
 }
 body
  {
@@ -171,6 +177,26 @@ h6,
     }
 
 
+.popover-notifications .popover-content {
+    padding: 0;
+}
+
+.popover-notifications ul.notifications {
+      list-style: none;
+      padding: 0;
+ }
+.popover-notifications ul.notifications >li {
+    border-bottom: 1px solid #ddd; 
+    padding:10px;
+}
+
+.popover-notifications ul.notifications .highlight {
+    font-weight: bold;
+}
+
+ul.notifications >li:last-child {
+    border-bottom: none; 
+}
 
 .voffset  { margin-top: 5px; }
 .voffset1 { margin-top: 10px; }
@@ -178,3 +204,15 @@ h6,
 .voffset3 { margin-top: 20px; }
 .voffset4 { margin-top: 40px; }
 .voffset5 { margin-top: 70px; }
+
+
+.navbar-inverse .notifications {
+    position: relative;
+}
+
+.navbar-inverse .notifications .badge {
+    position: absolute;
+    top: 8px;
+    right: -1px;
+    background: #a80a0a;
+}
