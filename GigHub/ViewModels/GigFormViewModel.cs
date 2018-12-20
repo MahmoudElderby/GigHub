@@ -53,6 +53,6 @@ namespace GigHub.ViewModels
 
         }
 
-        public string HeadingText { get; set; }
+        public string HeadingText { get; set; }        
     }
 }

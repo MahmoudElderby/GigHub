@@ -10,6 +10,7 @@ using GigHub.Models;
 using Microsoft.AspNet.Identity;
 using System.Data.Entity;
 using AutoMapper;
+using AutoMapper.Internal;
 using GigHub.Dtos;
 
 namespace GigHub.Controllers.Api
@@ -28,8 +29,8 @@ namespace GigHub.Controllers.Api
         public IEnumerable<NotificationDto> GetNotifications()
         {
 
-            var userId = "b147771b-6081-4ff7-a803-b206b1229e92";
-            //var userId = User.Identity.GetUserId();
+            //var userId = "b147771b-6081-4ff7-a803-b206b1229e92";
+            var userId = User.Identity.GetUserId();
             var notifications = _context.UserNotifications
                 .Where(n => n.UserId == userId && !n.IsRead)
                 .Select(n => n.Notification)
@@ -62,5 +63,16 @@ namespace GigHub.Controllers.Api
             //   });
         }
 
+        [HttpPost]
+        public IHttpActionResult MarkasRead()
+        {
+            var userId = User.Identity.GetUserId();
+            _context.UserNotifications.Where(n => n.UserId == userId && !n.IsRead).ToList().Each(n => n.Read() );
+
+            _context.SaveChanges();
+
+            return Ok();
+
+        }
     }
 }

@@ -3,6 +3,20 @@
     ViewBag.Title = @Model.HeaderText;
 }
 
+@using (Html.BeginForm("SearchTerm","Home"))
+{
+
+    <div class="form-group">
+        <div class="input-group" style="width: 300px">
+            @Html.TextBoxFor(m=>m.SearchTerm, new {@class="form-control", placeholder ="Search by genre, artist, venue"})
+            <span class="input-group-addon"  id="">
+                <i  class="glyphicon glyphicon-search"></i>
+            </span>
+        </div>
+    </div>
+
+}
+
 <h2>@Model.HeaderText</h2>
 
 <ul class="gigs voffset3">

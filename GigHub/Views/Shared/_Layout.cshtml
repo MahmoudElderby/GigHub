@@ -71,7 +71,8 @@
 </script>
 <script>
 
-    $(document).ready(function() {
+    $(document).ready(function () {
+
         $.getJSON("/api/notifications",
             function (notifications) {
 
@@ -83,18 +84,25 @@
                     .removeClass("hide")
                     .addClass("animated flash");
 
-                
 
                 $(".notifications").popover({
                     html: true,
                     title: "Notifications",
-                    placement:"bottom",
-                    content:function() {
+                    placement: "bottom",
+                    content: function () {
                         var compiled = _.template($("#notification-template").html());
-                        return compiled({notifications:notifications});
+                        return compiled({ notifications: notifications });
                     },
-                    template: '<div class="popover popover-notifications" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
-                    
+                    template:
+                        '<div class="popover popover-notifications" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+
+                }).on("shown.bs.popover", function () {
+                    $.post("/api/notifications/markAsRead").done(function() {
+                        $(".js-notifications-count")
+                            .text("")
+                            .addClass("hide");
+                    });
+
                 });
             });
     });
