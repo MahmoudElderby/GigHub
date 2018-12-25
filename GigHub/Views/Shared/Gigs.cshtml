@@ -1,4 +1,5 @@
-﻿@model GigHub.ViewModels.GigsViewModel
+﻿@using Antlr.Runtime.Tree
+@model GigHub.ViewModels.GigsViewModel
 @{
     ViewBag.Title = @Model.HeaderText;
 }
@@ -19,7 +20,7 @@
 
 <h2>@Model.HeaderText</h2>
 
-<ul class="gigs voffset3">
+<ul id="gigs" class="gigs voffset3">
     @foreach (var gig in Model.UpCominGigs)
     {
         <li>
@@ -33,7 +34,7 @@
             </div>
             <div class="details">
                 <span class="artist">
-                    @gig.Artist.Name
+                     @Html.ActionLink(@gig.Artist.Name,"Detail" ,"gigs" ,new {gigId = @gig.Id},null )
                     
                     @if (gig.IsCancled)
                     {
@@ -50,7 +51,10 @@
                 </span>
                 @if (Model.ShowActions && !gig.IsCancled)
                 {
-                    <button data-gigid="@gig.Id" class="btn btn-default btn-sm pull-right js-toggle-attendance">Going ?</button>
+                    <button data-gigid="@gig.Id" class="btn @(Model.attend.Contains(gig.Id) ? "btn-info" : "btn-default") 
+                            btn-sm pull-right js-toggle-attendance">
+                        @(Model.attend.Contains(gig.Id) ? "Going" : "Going ?")
+                    </button>
                 }
 
             </div>
@@ -63,22 +67,7 @@
     <script>
         $(document).ready(function () {
 
-            $(".js-toggle-attendance").click(function (e) {
-                var btn = $(e.target);
-
-                $.post("/api/attendances", { gigId: btn.attr("data-gigid") })
-
-                    .done(function () {
-                        btn.removeClass("btn-default")
-                            .addClass("btn-info")
-                            .text("Going");
-
-                    }).fail(function () {
-                        console.log("Error");
-                    });
-
-            });
-
+            gigsController.Init("#gigs");
 
             $(".js-follow").click(function (e) {
                 var btn = $(e.target);
